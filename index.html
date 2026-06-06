@@ -1,488 +1,729 @@
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-font-family:'Inter',sans-serif;
-background:#0b1220;
-color:#f8fafc;
-line-height:1.7;
-}
-.container{width:90%;max-width:1200px;margin:auto}
-a{text-decoration:none;color:inherit}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ron's Voice Foundation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
-header{
-position:sticky;
-top:0;
-background:rgba(11,18,32,.92);
-backdrop-filter:blur(12px);
-border-bottom:1px solid rgba(255,255,255,.08);
-z-index:1000;
-}
-nav{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:1.2rem 0;
-}
-.logo{
-font-size:1.4rem;
-font-weight:700;
-color:#5eead4;
-}
-.nav-links{
-display:flex;
-gap:2rem;
-color:#cbd5e1;
-}
+  <style>
+    :root {
+      --bg: #0b1220;
+      --bg-soft: rgba(255, 255, 255, 0.03);
+      --bg-softer: rgba(255, 255, 255, 0.04);
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --muted-2: #94a3b8;
+      --accent: #5eead4;
+      --accent-dark: #081018;
+      --border: rgba(255, 255, 255, 0.08);
+      --border-strong: rgba(255, 255, 255, 0.15);
+      --radius: 24px;
+      --container: 1200px;
+    }
 
-.hero{
-min-height:90vh;
-display:flex;
-align-items:center;
-background:
-radial-gradient(circle at top right, rgba(94,234,212,.12), transparent 35%),
-radial-gradient(circle at bottom left, rgba(59,130,246,.12), transparent 35%),
-#0b1220;
-padding:6rem 0;
-}
-.hero-grid{
-display:grid;
-grid-template-columns:1.1fr .9fr;
-gap:4rem;
-align-items:center;
-}
-.hero-tag{
-display:inline-block;
-padding:.5rem 1rem;
-border-radius:999px;
-background:rgba(94,234,212,.08);
-border:1px solid rgba(94,234,212,.15);
-color:#5eead4;
-margin-bottom:1.5rem;
-}
-.hero h1{
-font-size:4.5rem;
-line-height:1.05;
-margin-bottom:1.5rem;
-}
-.hero p{
-color:#cbd5e1;
-font-size:1.15rem;
-margin-bottom:2rem;
-}
-.btn-group{display:flex;gap:1rem;flex-wrap:wrap}
-.btn{
-padding:.9rem 1.5rem;
-border-radius:14px;
-font-weight:600;
-display:inline-block;
-}
-.btn-primary{
-background:#5eead4;
-color:#081018;
-}
-.btn-secondary{
-border:1px solid rgba(255,255,255,.15);
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-.hero-card,.card,.story-box,.team-card{
-background:rgba(255,255,255,.03);
-border:1px solid rgba(255,255,255,.08);
-border-radius:24px;
-backdrop-filter:blur(10px);
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-.hero-card{
-overflow:hidden;
-}
-.hero-card img{
-width:100%;
-display:block;
-}
-.hero-caption{
-padding:1.5rem;
-color:#94a3b8;
-}
+    body {
+      font-family: "Inter", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
 
-section{padding:6rem 0}
-.section-title{
-font-size:2.5rem;
-text-align:center;
-margin-bottom:1rem;
-}
-.section-subtitle{
-max-width:750px;
-margin:0 auto 3rem;
-text-align:center;
-color:#94a3b8;
-}
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:2rem;
-}
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-.team-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:2rem;
-align-items:start;
-}
+    button {
+      font: inherit;
+    }
 
-.card,.team-content,.story-box{
-padding:2rem;
-}
-.card h3{
-color:#5eead4;
-margin-bottom:1rem;
-}
+    .container {
+      width: min(90%, var(--container));
+      margin: 0 auto;
+    }
 
-.impact{
-background:rgba(255,255,255,.02);
-border-top:1px solid rgba(255,255,255,.08);
-border-bottom:1px solid rgba(255,255,255,.08);
-}
-.impact-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:2rem;
-text-align:center;
-}
-.impact-grid h2{
-font-size:3rem;
-color:#5eead4;
-}
+    .glass {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      backdrop-filter: blur(10px);
+    }
 
-.story{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:2rem;
-}
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(11, 18, 32, 0.92);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
 
-.team-card{overflow:hidden}
-.team-card img{
-width:100%;
-height:320px;
-object-fit:cover;
-}
-.placeholder{
-height:320px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:4rem;
-font-weight:800;
-background:linear-gradient(135deg, rgba(94,234,212,.12), rgba(59,130,246,.12));
-color:#5eead4;
-}
-.team-role{
-display:block;
-margin:.5rem 0 1rem;
-color:#94a3b8;
-}
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 0;
+    }
 
-.cta{
-text-align:center;
-}
-.cta p{
-max-width:700px;
-margin:1rem auto 2rem;
-color:#cbd5e1;
-}
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
 
-footer{
-border-top:1px solid rgba(255,255,255,.08);
-padding:2rem 0;
-text-align:center;
-color:#94a3b8;
-}
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
 
-.story-toggle{
-margin-top:1rem;
-background:none;
-border:none;
-color:#5eead4;
-cursor:pointer;
-font-weight:600;
-font-size:0.95rem;
-}
+    .nav-links a {
+      transition: color 0.2s ease;
+    }
 
-.story-toggle:hover{
-opacity:.8;
-}
+    .nav-links a:hover {
+      color: var(--accent);
+    }
 
-.story-hidden{
-max-height:0;
-overflow:hidden;
-transition:max-height .4s ease;
-}
+    section {
+      padding: 6rem 0;
+    }
 
-.story-hidden.open{
-max-height:400px;
-overflow-y:auto;
-margin-top:1rem;
-padding-right:10px;
-scrollbar-width:thin;
-scrollbar-color:rgba(148,163,184,0.35) rgba(255,255,255,0.03);
-}
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      padding: 6rem 0;
+      background:
+        radial-gradient(circle at top right, rgba(94, 234, 212, 0.12), transparent 35%),
+        radial-gradient(circle at bottom left, rgba(59, 130, 246, 0.12), transparent 35%),
+        var(--bg);
+    }
 
-.story-hidden.open::-webkit-scrollbar{
-width:6px;
-}
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 4rem;
+      align-items: center;
+    }
 
-.story-hidden.open::-webkit-scrollbar-track{
-background:rgba(255,255,255,0.03);
-border-radius:10px;
-}
+    .hero-tag {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      padding: 0.5rem 1rem;
+      color: var(--accent);
+      background: rgba(94, 234, 212, 0.08);
+      border: 1px solid rgba(94, 234, 212, 0.15);
+      border-radius: 999px;
+      font-weight: 600;
+    }
 
-.story-hidden.open::-webkit-scrollbar-thumb{
-background:rgba(148,163,184,0.35);
-border-radius:10px;
-}
+    .hero h1 {
+      margin-bottom: 1.5rem;
+      font-size: clamp(3rem, 8vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.05em;
+    }
 
-.story-hidden.open::-webkit-scrollbar-thumb:hover{
-background:rgba(148,163,184,0.55);
-}
+    .hero p {
+      max-width: 650px;
+      margin-bottom: 2rem;
+      color: var(--muted);
+      font-size: 1.15rem;
+    }
 
-.story-hidden p{
-color:#cbd5e1;
-margin-bottom:1rem;
-}
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
 
-@media(max-width:900px){
-.hero-grid,.story{grid-template-columns:1fr}
-.hero h1{font-size:3rem}
-.nav-links{display:none}
-}
-</style>
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 1.5rem;
+      border-radius: 14px;
+      font-weight: 700;
+      transition: transform 0.2s ease, opacity 0.2s ease, border-color 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      opacity: 0.92;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--accent-dark);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--border-strong);
+      color: var(--text);
+    }
+
+    .hero-card {
+      overflow: hidden;
+    }
+
+    .hero-card img {
+      width: 100%;
+    }
+
+    .hero-caption {
+      padding: 1.5rem;
+      color: var(--muted-2);
+    }
+
+    .section-title {
+      margin-bottom: 1rem;
+      text-align: center;
+      font-size: clamp(2rem, 5vw, 2.5rem);
+      line-height: 1.15;
+    }
+
+    .section-subtitle {
+      max-width: 750px;
+      margin: 0 auto 3rem;
+      text-align: center;
+      color: var(--muted-2);
+    }
+
+    .cards,
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .card,
+    .team-card,
+    .story-box {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      backdrop-filter: blur(10px);
+    }
+
+    .card,
+    .story-box,
+    .team-content {
+      padding: 2rem;
+    }
+
+    .card h3,
+    .program-card h3 {
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    .card p,
+    .story-box p,
+    .team-content p {
+      color: var(--muted);
+    }
+
+    .program-card {
+      align-self: start;
+    }
+
+    .program-card p {
+      margin-bottom: 1rem;
+    }
+
+    .impact {
+      background: rgba(255, 255, 255, 0.02);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .impact-grid h2 {
+      color: var(--accent);
+      font-size: 3rem;
+      line-height: 1.1;
+    }
+
+    .impact-grid p {
+      color: var(--muted);
+    }
+
+    .story {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2rem;
+    }
+
+    .story-box h2 {
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .story-box p + p {
+      margin-top: 1rem;
+    }
+
+    .team-card {
+      overflow: hidden;
+    }
+
+    .team-card img,
+    .placeholder {
+      width: 100%;
+      height: 320px;
+    }
+
+    .team-card img {
+      object-fit: cover;
+    }
+
+    .placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      background: linear-gradient(135deg, rgba(94, 234, 212, 0.12), rgba(59, 130, 246, 0.12));
+      font-size: 4rem;
+      font-weight: 800;
+    }
+
+    .team-content h3 {
+      color: var(--text);
+    }
+
+    .team-role {
+      display: block;
+      margin: 0.5rem 0 1rem;
+      color: var(--muted-2);
+    }
+
+    .story-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-top: 1rem;
+      padding: 0;
+      color: var(--accent);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .story-toggle:hover {
+      opacity: 0.8;
+    }
+
+    .story-hidden {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, margin-top 0.4s ease;
+    }
+
+    .story-hidden.open {
+      max-height: 700px;
+      margin-top: 1rem;
+      padding-right: 10px;
+      overflow-y: auto;
+    }
+
+    .story-hidden.open::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .story-hidden.open::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 10px;
+    }
+
+    .story-hidden.open::-webkit-scrollbar-thumb {
+      background: rgba(148, 163, 184, 0.35);
+      border-radius: 10px;
+    }
+
+    .story-hidden.open::-webkit-scrollbar-thumb:hover {
+      background: rgba(148, 163, 184, 0.55);
+    }
+
+    .story-hidden p {
+      margin-bottom: 1rem;
+      color: var(--muted);
+    }
+
+    .story-hidden ul {
+      margin: 0 0 1rem 1.25rem;
+      color: var(--muted);
+    }
+
+    .story-hidden li {
+      margin-bottom: 0.35rem;
+    }
+
+    .story-hidden h4 {
+      margin: 1rem 0 0.5rem;
+      color: var(--text);
+    }
+
+    .story-hidden hr {
+      margin: 1rem 0;
+      border: none;
+      border-top: 1px solid var(--border-strong);
+    }
+
+    .cta {
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: clamp(2rem, 5vw, 2.5rem);
+      line-height: 1.15;
+    }
+
+    .cta p {
+      max-width: 700px;
+      margin: 1rem auto 2rem;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 2rem 0;
+      text-align: center;
+      color: var(--muted-2);
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .story {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 560px) {
+      section,
+      .hero {
+        padding: 4rem 0;
+      }
+
+      .card,
+      .story-box,
+      .team-content {
+        padding: 1.5rem;
+      }
+
+      .team-card img,
+      .placeholder {
+        height: 260px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-
-<header>
-<div class="container">
-<nav>
-<div class="logo">Ron's Voice Foundation</div>
-<div class="nav-links">
-<a href="#mission">Mission</a>
-<a href="#programs">Programs</a>
-<a href="#story">Story</a>
-<a href="#team">Team</a>
-<a href="#donate">Donate</a>
-</div>
-</nav>
-</div>
-</header>
-
-<section class="hero">
-<div class="container hero-grid">
-<div>
-<span class="hero-tag">In Honor of Ronald L. Steele</span>
-<h1>Everyone Deserves<br>To Be Heard.</h1>
-<p>Ron's Voice Foundation helps individuals facing speech loss access communication technology, support, and resources so they can remain connected to the people they love.</p>
-<div class="btn-group">
-<a href="#donate" class="btn btn-primary">Support Our Mission</a>
-<a href="#programs" class="btn btn-secondary">Learn More</a>
-</div>
-</div>
-
-<div class="hero-card">
-<img src="ron.jpg" alt="Ron Steele">
-<div class="hero-caption">
-<strong>Ron Steele</strong><br>
-The inspiration behind Ron's Voice Foundation.
-</div>
-</div>
-</div>
-</section>
-
- <section id="mission">
+  <header>
     <div class="container">
-      <h2 class="section-title">Our Mission</h2>
+      <nav aria-label="Main navigation">
+        <a href="#" class="logo">Ron's Voice Foundation</a>
 
-      <p class="section-subtitle">
-        Our mission is to bridge the gap between disability and communication through modern assistive technology, giving non-verbal individuals affordable access to tools that help them speak, express themselves, and remain connected.
-      </p>
+        <div class="nav-links">
+          <a href="#mission">Mission</a>
+          <a href="#programs">Programs</a>
+          <a href="#story">Story</a>
+          <a href="#team">Team</a>
+          <a href="#donate">Donate</a>
+        </div>
+      </nav>
+    </div>
+  </header>
 
-      <div class="cards">
-        <div class="card">
-          <h3>Communication Devices</h3>
-          <p>
-            Providing tablets, AAC software, and adaptive communication systems to patients in need.
-          </p>
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="hero-tag">In Honor of Ronald L. Steele</span>
+          <h1>Everyone Deserves<br />To Be Heard.</h1>
+          <p>Ron's Voice Foundation helps individuals facing speech loss access communication technology, support, and resources so they can remain connected to the people they love.</p>
+
+          <div class="btn-group">
+            <a href="#donate" class="btn btn-primary">Support Our Mission</a>
+            <a href="#programs" class="btn btn-secondary">Learn More</a>
+          </div>
         </div>
 
-        <div class="card">
-          <h3>Family Support</h3>
-          <p>
-            Helping caregivers and families learn how to use communication technology effectively.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Accessibility</h3>
-          <p>
-            Making life-changing assistive technology more affordable and accessible to everyone.
-          </p>
+        <div class="hero-card glass">
+          <img src="ron.jpg" alt="Ron Steele" />
+          <div class="hero-caption">
+            <strong>Ron Steele</strong><br />
+            The inspiration behind Ron's Voice Foundation.
+          </div>
         </div>
       </div>
+    </section>
+
+    <section id="mission">
+      <div class="container">
+        <h2 class="section-title">Our Mission</h2>
+        <p class="section-subtitle">Our mission is to bridge the gap between disability and communication through modern assistive technology, giving non-verbal individuals affordable access to tools that help them speak, express themselves, and remain connected.</p>
+
+        <div class="cards">
+          <article class="card">
+            <h3>Communication Devices</h3>
+            <p>Providing tablets, AAC software, and adaptive communication systems to patients in need.</p>
+          </article>
+
+          <article class="card">
+            <h3>Family Support</h3>
+            <p>Helping caregivers and families learn how to use communication technology effectively.</p>
+          </article>
+
+          <article class="card">
+            <h3>Accessibility</h3>
+            <p>Making life-changing assistive technology more affordable and accessible to everyone.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="programs">
+      <div class="container">
+        <h2 class="section-title">Programs</h2>
+        <p class="section-subtitle">Starting small, growing intentionally, and changing lives through meaningful technology access.</p>
+
+        <div class="cards">
+          <article class="card program-card">
+            <h3>Communication Kits</h3>
+            <p>Providing communication devices and support packages tailored to a patient's needs.</p>
+
+            <button class="story-toggle" type="button" data-open-text="Hide Details ▲" data-closed-text="View Package Options ▼" aria-expanded="false">
+              View Package Options ▼
+            </button>
+
+            <div class="story-hidden">
+              <h4>Tier 1: Essential Voice Kit ($300–$600)</h4>
+              <p>Designed for stroke patients, early ALS patients, and families on a budget.</p>
+              <ul>
+                <li>Tablet</li>
+                <li>Protective case</li>
+                <li>Communication apps</li>
+                <li>Quick-start guide</li>
+              </ul>
+
+              <hr />
+
+              <h4>Tier 2: Complete Communication Kit ($800–$1,500)</h4>
+              <ul>
+                <li>iPad</li>
+                <li>AAC software</li>
+                <li>Adjustable stand</li>
+                <li>Setup assistance</li>
+                <li>Follow-up support</li>
+              </ul>
+
+              <hr />
+
+              <h4>Tier 3: Advanced Accessibility Kit ($2,500–$8,000+)</h4>
+              <ul>
+                <li>Dedicated communication device</li>
+                <li>Eye tracking hardware</li>
+                <li>Mounting system</li>
+                <li>Technical support</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="card program-card">
+            <h3>Voice Banking Assistance</h3>
+            <p>Helping patients preserve and recreate their natural voice before speech loss progresses.</p>
+
+            <button class="story-toggle" type="button" data-open-text="Hide Details ▲" data-closed-text="Learn More ▼" aria-expanded="false">
+              Learn More ▼
+            </button>
+
+            <div class="story-hidden">
+              <h4>Voice Preservation Kit ($100–$300)</h4>
+              <ul>
+                <li>Voice banking guidance</li>
+                <li>Microphone recommendations</li>
+                <li>AI voice cloning resources</li>
+                <li>Recording checklist</li>
+                <li>Setup assistance</li>
+              </ul>
+              <p>Our goal is to help preserve a person's voice before it is permanently lost.</p>
+            </div>
+          </article>
+
+          <article class="card program-card">
+            <h3>Eye Tracking Technology</h3>
+            <p>Advanced communication solutions for individuals with severe mobility limitations.</p>
+
+            <button class="story-toggle" type="button" data-open-text="Hide Details ▲" data-closed-text="Learn More ▼" aria-expanded="false">
+              Learn More ▼
+            </button>
+
+            <div class="story-hidden">
+              <h4>Advanced Communication Systems</h4>
+              <ul>
+                <li>Tobii Dynavox systems</li>
+                <li>Lingraphica devices</li>
+                <li>Custom mounting solutions</li>
+                <li>Training sessions</li>
+                <li>Technical support</li>
+              </ul>
+              <p>These systems can cost several thousand dollars and will be a major sponsorship focus for Ron's Voice.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="impact">
+      <div class="container">
+        <div class="impact-grid">
+          <div>
+            <h2>0</h2>
+            <p>Patients Helped</p>
+          </div>
+
+          <div>
+            <h2>100%</h2>
+            <p>Focused On Communication Access</p>
+          </div>
+
+          <div>
+            <h2>$800</h2>
+            <p>Estimated Cost Per Communication Kit</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="story">
+      <div class="container">
+        <div class="story">
+          <article class="story-box">
+            <h2>Why Ron's Voice Exists</h2>
+            <p>Ron's Voice Foundation was inspired by our founder's grandfather, Ron Steele, who lived with ALS before adaptive technology as we know it existed, and spent close to a decade unable to communicate verbally with those he loved most.</p>
+            <p>Watching someone lose the ability to communicate changes the way you understand connection, dignity, and human interaction.</p>
+            <p>We believe nobody should feel trapped in silence simply because they lack access to the right technology.</p>
+          </article>
+
+          <article class="story-box">
+            <h2>Our Vision</h2>
+            <p>We envision a world where no person is isolated by the inability to communicate verbally.</p>
+            <p>Through assistive technology, compassionate support, and community partnerships, we aim to restore voices and strengthen human connection.</p>
+            <p>Every donation directly helps provide communication tools to people who need them most.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="team">
+      <div class="container">
+        <h2 class="section-title">Meet The Team</h2>
+        <p class="section-subtitle">Built by people who believe communication is a human right.</p>
+
+        <div class="team-grid">
+          <article class="team-card">
+            <img src="ron.jpg" alt="Ron Steele" />
+            <div class="team-content">
+              <h3>Ron Steele</h3>
+              <span class="team-role">Inspiration &amp; Namesake</span>
+              <p>Ron's story serves as the foundation for our mission.</p>
+            </div>
+          </article>
+
+          <article class="team-card">
+            <div class="placeholder" aria-hidden="true">CS</div>
+            <div class="team-content">
+              <h3>Curtis Stonehocker</h3>
+              <span class="team-role">Founder</span>
+              <p>Created Ron's Voice Foundation to help individuals and families access communication technology and support.</p>
+
+              <button class="story-toggle" type="button" data-open-text="Hide My Story ▲" data-closed-text="Why I Started This ▼" aria-expanded="false">
+                Why I Started This ▼
+              </button>
+
+              <div class="story-hidden">
+                <p>My grandfather passed away long before I was even thought of, so I never had the privilege of meeting him. What I have are the stories: what an incredible man he was, how much I look like him, and how deeply he loved his family.</p>
+                <p>When I think of my grandfather, I do not think of him as a patient. I think of the man my family remembers — loving, present, and full of personality.</p>
+                <p>Growing up, I heard about the challenges he faced using early communication devices and how difficult it became for him to communicate with the people he loved most. That has always stayed with me.</p>
+                <p>I often think about how modern technology could have changed his quality of life. It bothers me that the tools he needed were either limited, unavailable, or out of reach.</p>
+                <p>To me, communication is not just words. It is how we connect, laugh, joke, make decisions, express love, and remain ourselves.</p>
+                <p>If Ron's Voice can help one patient make their own decisions, one wife hear her husband's thoughts again, or one father tell his children he loves them, then this work will be worth it.</p>
+                <p>I never got to meet my grandfather, but Ron's Voice allows me to honor him while helping others in his name.</p>
+                <p>Losing your voice does not mean losing your personality, identity, independence, or dignity. Losing your voice does not mean you cannot be heard.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="team-card">
+            <div class="placeholder" aria-hidden="true">+</div>
+            <div class="team-content">
+              <h3>Join Our Mission</h3>
+              <span class="team-role">Volunteers • Advisors • Partners</span>
+              <p>We're actively building relationships with healthcare professionals, advocates, and supporters who share our vision.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="donate" class="cta">
+      <div class="container">
+        <h2>Help Someone Find Their Voice</h2>
+        <p>Your support will eventually help provide communication technology, training, and hope for individuals facing speech loss.</p>
+        <a href="#" class="btn btn-primary">Donations Coming Soon</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Ron's Voice Foundation. All Rights Reserved.</p>
     </div>
-  </section>
+  </footer>
 
-<section id="programs">
-<div class="container">
-<h2 class="section-title">Programs</h2>
-<p class="section-subtitle">Starting small, growing intentionally, and changing lives through meaningful technology access.</p>
-<div class="cards">
-<div class="card"><h3>Communication Kits</h3><p>Pre-configured tablets with communication apps, protective cases, and mounting systems.</p></div>
-<div class="card"><h3>Voice Banking Assistance</h3><p>Helping patients preserve and recreate their natural voice before speech loss progresses.</p></div>
-<div class="card"><h3>Eye-Tracking Technology</h3><p>Advanced communication systems for individuals with severe mobility limitations.</p></div>
-</div>
-</div>
-</section>
+  <script>
+    document.querySelectorAll(".story-toggle").forEach((button) => {
+      button.addEventListener("click", () => {
+        const content = button.nextElementSibling;
+        const isOpen = content.classList.toggle("open");
 
-<section class="impact">
-<div class="container">
-<div class="impact-grid">
-<div><h2>0</h2><p>Patients Helped</p></div>
-<div><h2>100%</h2><p>Focused On Communication Access</p></div>
-<div><h2>$800</h2><p>Estimated Cost Per Communication Kit</p></div>
-</div>
-</div>
-</section>
-
-<section id="story">
-<div class="container">
-<div class="story">
-<div class="story-box">
-<h2>Why Ron's Voice Exists</h2>
-<p>Ron's Voice Foundation was inspired by our founder's grandfather, Ron Steele, who lived with ALS before adaptive technology as we know it existed, and spent close to a decade unable to communicate verbally with those he loved most.</p>
-<p> </p>
-<p>Watching someone lose the ability to communicate changes the way you understand connection, dignity, and human interaction.
-
-We believe nobody should feel trapped in silence simply because they lack access to the right technology.</p>
-</div>
-<div class="story-box">
-<h2>Our Vision</h2>
-<p>We envision a world where no person is isolated by the inability to communicate verbally.</p>
-<p>Through assistive technology, compassionate support, and community partnerships, we aim to restore voices and strengthen human connection.</p>
-<p>Every donation directly helps provide communication tools to people who need them most.</p>
-</div>
-</div>
-</div>
-</section>
-
-<section id="team">
-<div class="container">
-<h2 class="section-title">Meet The Team</h2>
-<p class="section-subtitle">Built by people who believe communication is a human right.</p>
-<div class="team-grid">
-<div class="team-card">
-<img src="ron.jpg" alt="Ron Steele">
-<div class="team-content">
-<h3>Ron Steele</h3>
-<span class="team-role">Inspiration & Namesake</span>
-<p>Ron's story serves as the foundation for our mission.</p>
-</div>
-</div>
-<div class="team-card">
-
-    <div class="placeholder">
-        CS
-    </div>
-
-    <div class="team-content">
-
-        <h3>Curtis Stonehocker</h3>
-
-        <span class="team-role">
-            Founder
-        </span>
-
-        <p>
-            Created Ron's Voice Foundation to help individuals and
-            families access communication technology and support.
-        </p>
-
-        <button class="story-toggle" onclick="toggleStory(this)">
-  Why I Started This ▼
-</button>
-       <div class="story-hidden">
-
-  <p>
-    My grandfather passed away long before I was even thought of, so I never had the privilege of meeting him. What I have are the stories: what an incredible man he was, how much I look like him, and how deeply he loved his family.
-  </p>
-
-  <p>
-    When I think of my grandfather, I do not think of him as a patient. I think of the man my family remembers — loving, present, and full of personality.
-  </p>
-
-  <p>
-    Growing up, I heard about the challenges he faced using early communication devices and how difficult it became for him to communicate with the people he loved most. That has always stayed with me.
-  </p>
-
-  <p>
-    I often think about how modern technology could have changed his quality of life. It bothers me that the tools he needed were either limited, unavailable, or out of reach.
-  </p>
-
-  <p>
-    To me, communication is not just words. It is how we connect, laugh, joke, make decisions, express love, and remain ourselves.
-  </p>
-
-  <p>
-    If Ron's Voice can help one patient make their own decisions, one wife hear her husband's thoughts again, or one father tell his children he loves them, then this work will be worth it.
-  </p>
-
-  <p>
-    I never got to meet my grandfather, but Ron's Voice allows me to honor him while helping others in his name.
-  </p>
-
-  <p>
-    Losing your voice does not mean losing your personality, identity, independence, or dignity. Losing your voice does not mean you cannot be heard.
-  </p>
-
-</div>
-    </div>
-
-</div><div class="team-content">
-<h3>Join Our Mission</h3>
-<span class="team-role">Volunteers • Advisors • Partners</span>
-<p>We're actively building relationships with healthcare professionals, advocates, and supporters who share our vision.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-<section id="donate" class="cta">
-<div class="container">
-<h2>Help Someone Find Their Voice</h2>
-<p>Your support will eventually help provide communication technology, training, and hope for individuals facing speech loss.</p>
-<a href="#" class="btn btn-primary">Donations Coming Soon</a>
-</div>
-</section>
-
-<footer>
-<div class="container">
-<p>© 2026 Ron's Voice Foundation. All Rights Reserved.</p>
-</div>
-</footer>
-
-<script>
-function toggleStory(button) {
-
-    const story =
-        button.nextElementSibling;
-
-    story.classList.toggle('open');
-
-    if (story.classList.contains('open')) {
-        button.innerHTML =
-            'Hide My Story ▲';
-    } else {
-        button.innerHTML =
-            'Why I Started Ron\'s Voice ▼';
-    }
-}
-</script>
+        button.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        button.textContent = isOpen ? button.dataset.openText : button.dataset.closedText;
+      });
+    });
+  </script>
 </body>
 </html>
+
