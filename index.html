@@ -422,6 +422,37 @@
       color: var(--muted);
     }
 
+    .donate-button {
+      display: inline-block;
+      padding: 0.9rem 1.5rem;
+      border-radius: 14px;
+      font-weight: 700;
+      background: var(--accent);
+      color: var(--accent-dark);
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .donate-button:hover {
+      transform: translateY(-2px);
+      opacity: 0.92;
+    }
+
+    .donation-disclaimer {
+      max-width: 760px;
+      margin: 1.75rem auto 0;
+      padding: 1rem 1.25rem;
+      color: var(--muted-2);
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+
+    .donation-disclaimer strong {
+      color: var(--text);
+    }
+
     footer {
       padding: 2rem 0;
       text-align: center;
@@ -719,11 +750,21 @@
         <h2>Help Someone Find Their Voice</h2>
         <p>Your support will help provide communication technology, training, and hope for individuals facing speech loss.</p>
         <a href="https://buy.stripe.com/5kQcN79lE7oOf3r32y5EY00"
-   		class="donate-button"
-  		 target="_blank"
-  		 rel="noopener noreferrer">
-    Donate
-</a>
+           class="donate-button"
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="Donate to Ron's Voice Foundation">
+          Donate
+        </a>
+
+        <div class="donation-disclaimer">
+          <strong>Tax-Exempt Status Pending:</strong>
+          Ron's Voice Foundation is registered and recognized through the state of Idaho, and also currently seeking recognition as a
+          501(c)(3) tax-exempt organization. Contributions are accepted to
+          support our charitable mission, but tax deductibility is not
+          currently guaranteed. Please consult your tax advisor regarding
+          your individual circumstances.
+        </div>
       </div>
     </section>
   </main>
@@ -747,4 +788,3 @@
   </script>
 </body>
 </html>
-
